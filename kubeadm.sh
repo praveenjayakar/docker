@@ -53,7 +53,7 @@ echo "Installing kubeadm, kubelet, and kubectl..."
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
 sleep 2
-
+sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg ;
 sleep 2
 
