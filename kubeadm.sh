@@ -73,3 +73,6 @@ echo "Done!"
 
 #sudo kubeadm init --control-plane-endpoint=${kubeip} --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///var/run/containerd/containerd.sock
 
+#curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/calico.yaml -O
+
+#kubectl apply -f calico.yaml
