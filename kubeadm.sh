@@ -26,8 +26,9 @@ sudo rm -rf /etc/containerd/*
 sudo systemctl restart containerd
 
 # Check Docker and containerd status
-sudo systemctl status docker | cat
-sudo systemctl status containerd | cat
+timeout 3 sudo systemctl status docker ; exit 1
+echo "__///////\\\\\\\__"
+timeout 3 sudo systemctl status containerd ; exit 1
 
 # Disable swap for Kubernetes
 sudo swapoff -a
