@@ -70,7 +70,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 echo "Done!"
 
 
-#kubeip=$(ip addr | grep -i eth | grep -i / | grep -i inet | awk '{print $2}')
+#kubeip=$(ip addr | grep -i eth | grep -i inet | awk '{print $2}'| cut -d "/" -f1)
 
 #sudo kubeadm init --control-plane-endpoint=${kubeip} --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///var/run/containerd/containerd.sock
 
