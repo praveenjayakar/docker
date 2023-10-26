@@ -77,3 +77,9 @@ echo "Done!"
 #curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/calico.yaml -O
 
 #kubectl apply -f calico.yaml
+
+#if you want to untaint the node to deploy pods on master node
+
+#use this command kubectl taint nodes localhost node-role.kubernetes.io/control-plane:NoSchedule-
+
+#in the name of localhost give the cluster name .
