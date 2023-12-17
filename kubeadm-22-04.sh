@@ -9,6 +9,20 @@ sudo apt-get install -y \
     gnupg \
     lolcat
 
+ufw disable
+swapoff -a
+
+echo "Disabling swap..."
+
+# Disable swap for the current session
+sudo swapoff -a
+
+# Comment out the swap entry in /etc/fstab to make it persistent across reboots
+sudo sed -i '/\sswap\s/s/^/#/' /etc/fstab
+
+echo "Swap disabled successfully."
+
+
 # Install Docker's GPG key
 sudo install -m 0755 -d /etc/apt/trusted.gpg.d/
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/docker.gpg
