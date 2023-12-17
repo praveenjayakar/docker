@@ -93,7 +93,7 @@ curl -sSL "https://raw.githubusercontent.com/kubernetes/release/${RELEASE_VERSIO
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 systemctl enable --now kubelet
-chown -R $USER:$USER /usr/local/bin/crictl
+
 
 echo "Done!"
 #kubeip=$(ip addr | grep -i eth | grep -i inet | awk '{print $2}'| cut -d "/" -f1)
