@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Metrics</title>
+</head>
+<body>
+    <h1>Server Metrics</h1>
+
+    <h2>CPU Usage:</h2>
+    <p>{{ cpu_percent }}%</p>
+
+    <h2>Memory Usage:</h2>
+    <p>Total: {{ memory_info_total }} MB</p>
+    <p>Used: {{ memory_info_used }} MB</p>
+    <p>Free: {{ memory_info_free }} MB</p>
+    <p>Percentage Used: {{ memory_info_percent }}%</p>
+
+    <h2>Disk Usage:</h2>
+    <p>Total: {{ disk_info_total }} MB</p>
+    <p>Used: {{ disk_info_used }} MB</p>
+    <p>Free: {{ disk_info_free }} MB</p>
+    <p>Percentage Used: {{ disk_info_percent }}%</p>
+</body>
+</html>
+

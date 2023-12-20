@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Metrics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+</head>
+<body>
+    <h1>Server Metrics Dashboard</h1>
+    <canvas id="metricsChart" width="400" height="200"></canvas>
+
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        var cpuData = [];
+        var memoryData = [];
+        var diskData = [];
+        var labels = [];
+
+        var ctx = document.getElementById('metricsChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'CPU (%)',
+                        borderColor: 'rgb(75, 192, 192)',
+                        data: cpuData
+                    },
+                    {
+                        label: 'Memory (%)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: memoryData
+                    },
+                    {
+                        label: 'Disk (%)',
+                        borderColor: 'rgb(255, 205, 86)',
+                        data: diskData
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        socket.on('update_metrics', function (data) {
+            var metrics = JSON.parse(data);
+
+            cpuData.push(metrics.cpu_percent);
+            memoryData.push(metrics.memory_percent);
+            diskData.push(metrics.disk_percent);
+            labels.push(labels.length);
+
+            // Keep only the last 10 data points for better visualization
+            if (labels.length > 10) {
+                cpuData.shift();
+                memoryData.shift();
+                diskData.shift();
+                labels.shift();
+            }
+
+            chart.update();
+        });
+    </script>
+</body>
+</html>
+
