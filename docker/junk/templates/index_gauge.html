@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Metrics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/raphael"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justgage"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+</head>
+<body>
+    <h1>Server Metrics Dashboard</h1>
+
+    <div id="cpuGauge"></div>
+    <div id="memoryGauge"></div>
+    <div id="diskGauge"></div>
+
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        // Create gauges for CPU, Memory, and Disk
+        var cpuGauge = new JustGage({
+            id: 'cpuGauge',
+            title: 'CPU Usage (%)',
+            label: '%',
+            value: 0,
+            min: 0,
+            max: 100,
+            decimals: 1
+        });
+
+        var memoryGauge = new JustGage({
+            id: 'memoryGauge',
+            title: 'Memory Usage (%)',
+            label: '%',
+            value: 0,
+            min: 0,
+            max: 100,
+            decimals: 1
+        });
+
+        var diskGauge = new JustGage({
+            id: 'diskGauge',
+            title: 'Disk Usage (%)',
+            label: '%',
+            value: 0,
+            min: 0,
+            max: 100,
+            decimals: 1
+        });
+
+        socket.on('update_metrics', function (data) {
+            var metrics = JSON.parse(data);
+
+            // Update gauges with real-time metrics
+            cpuGauge.refresh(metrics.cpu_percent);
+            memoryGauge.refresh(metrics.memory_percent);
+            diskGauge.refresh(metrics.disk_percent);
+        });
+    </script>
+</body>
+</html>
+
