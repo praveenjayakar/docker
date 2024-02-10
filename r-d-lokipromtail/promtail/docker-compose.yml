@@ -1,0 +1,30 @@
+services:
+  loki:
+    image: grafana/loki:2.2.0
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - loki
+
+  promtail:
+    image: grafana/promtail:2.2.0
+    command: -config.file=/etc/promtail/promtail-local-config.yaml
+    networks:
+      - loki
+
+  nginx:
+    image: laurentbel/nginx-basic-auth
+    ports:
+      - "80:80"
+    depends_on:
+      - loki
+    environment:
+      - FORWARD_HOST=loki
+      - FORWARD_PORT=3100
+      - BASIC_USERNAME=admin
+      - BASIC_PASSWORD=admin
+    networks:
+      - loki
+
+networks:
+  loki:
+

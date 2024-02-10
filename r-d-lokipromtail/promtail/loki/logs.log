@@ -1,0 +1,476 @@
+nohup: ignoring input
+level=warn ts=2024-02-10T16:49:43.21746357Z caller=loki.go:288 msg="global timeout not configured, using default engine timeout (\"5m0s\"). This behavior will change in the next major to always use the default global timeout (\"5m\")."
+level=info ts=2024-02-10T16:49:43.219083214Z caller=main.go:108 msg="Starting Loki" version="(version=2.9.4, branch=HEAD, revision=f599ebc535)"
+level=info ts=2024-02-10T16:49:43.219948017Z caller=server.go:322 http=[::]:3100 grpc=[::]:9096 msg="server listening on addresses"
+level=warn ts=2024-02-10T16:49:43.222472335Z caller=cache.go:127 msg="fifocache config is deprecated. use embedded-cache instead"
+level=warn ts=2024-02-10T16:49:43.222487975Z caller=experimental.go:20 msg="experimental feature in use" feature="In-memory (FIFO) cache - chunksembedded-cache"
+level=info ts=2024-02-10T16:49:43.222926602Z caller=table_manager.go:427 index-store=tsdb-2020-10-24 msg="loading local table index_19763"
+ts=2024-02-10T16:49:43.223056924Z caller=spanlogger.go:86 level=info msg="building table names cache"
+level=info ts=2024-02-10T16:49:43.223056654Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+ts=2024-02-10T16:49:43.223108025Z caller=spanlogger.go:86 level=info msg="table names cache built" duration=45.161µs
+ts=2024-02-10T16:49:43.223117865Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T16:49:43.223146506Z caller=spanlogger.go:86 level=info msg="table cache built" duration=25.041µs
+level=info ts=2024-02-10T16:49:43.22346187Z caller=util.go:94 table-name=index_19763 file-name=1707579044-localhost-1707495529955551756.tsdb.gz size="500 B" msg="downloaded file" total_time=239.623µs
+level=info ts=2024-02-10T16:49:43.224183991Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.11µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T16:49:43.224204101Z caller=shipper.go:165 index-store=tsdb-2020-10-24 msg="starting index shipper in RW mode"
+level=info ts=2024-02-10T16:49:43.224348683Z caller=head_manager.go:299 index-store=tsdb-2020-10-24 component=tsdb-head-manager msg="loaded wals by period" groups=0
+level=info ts=2024-02-10T16:49:43.224416984Z caller=manager.go:85 index-store=tsdb-2020-10-24 component=tsdb-manager msg="loaded leftover local indices" err=null successful=true buckets=1 indices=1 failures=0
+level=info ts=2024-02-10T16:49:43.224440345Z caller=head_manager.go:299 index-store=tsdb-2020-10-24 component=tsdb-head-manager msg="loaded wals by period" groups=0
+level=info ts=2024-02-10T16:49:43.224720719Z caller=modules.go:1140 msg="-boltdb.shipper.compactor.shared-store not specified, initializing compactor to operator on the following object stores" stores=filesystem
+level=info ts=2024-02-10T16:49:43.2254157Z caller=worker.go:112 msg="Starting querier worker using query-scheduler and scheduler ring for addresses"
+level=info ts=2024-02-10T16:49:43.22682889Z caller=mapper.go:47 msg="cleaning up mapped rules directory" path=/tmp/loki/rules-temp
+level=info ts=2024-02-10T16:49:43.230573537Z caller=module_service.go:82 msg=initialising module=server
+level=info ts=2024-02-10T16:49:43.230624378Z caller=module_service.go:82 msg=initialising module=cache-generation-loader
+level=info ts=2024-02-10T16:49:43.230714239Z caller=module_service.go:82 msg=initialising module=memberlist-kv
+level=info ts=2024-02-10T16:49:43.230722959Z caller=module_service.go:82 msg=initialising module=query-frontend-tripperware
+level=info ts=2024-02-10T16:49:43.230735499Z caller=module_service.go:82 msg=initialising module=query-scheduler-ring
+level=info ts=2024-02-10T16:49:43.230736259Z caller=module_service.go:82 msg=initialising module=store
+level=info ts=2024-02-10T16:49:43.230748169Z caller=module_service.go:82 msg=initialising module=ring
+level=info ts=2024-02-10T16:49:43.23079226Z caller=ring.go:273 msg="ring doesn't exist in KV store yet"
+level=info ts=2024-02-10T16:49:43.23081054Z caller=ring.go:273 msg="ring doesn't exist in KV store yet"
+level=info ts=2024-02-10T16:49:43.230842911Z caller=module_service.go:82 msg=initialising module=analytics
+level=info ts=2024-02-10T16:49:43.230858332Z caller=module_service.go:82 msg=initialising module=ingester-querier
+level=info ts=2024-02-10T16:49:43.230891503Z caller=basic_lifecycler.go:297 msg="instance not found in the ring" instance=localhost ring=scheduler
+level=info ts=2024-02-10T16:49:43.230899543Z caller=basic_lifecycler_delegates.go:63 msg="not loading tokens from file, tokens file path is empty"
+level=info ts=2024-02-10T16:49:43.231036385Z caller=ringmanager.go:201 msg="waiting until scheduler is JOINING in the ring"
+level=info ts=2024-02-10T16:49:43.231042615Z caller=ringmanager.go:205 msg="scheduler is JOINING in the ring"
+level=info ts=2024-02-10T16:49:43.231082275Z caller=ringmanager.go:214 msg="waiting until scheduler is ACTIVE in the ring"
+level=info ts=2024-02-10T16:49:43.231083975Z caller=module_service.go:82 msg=initialising module=ruler
+level=info ts=2024-02-10T16:49:43.231098596Z caller=ruler.go:528 msg="ruler up and running"
+level=info ts=2024-02-10T16:49:43.231199237Z caller=module_service.go:82 msg=initialising module=compactor
+level=info ts=2024-02-10T16:49:43.231207607Z caller=module_service.go:82 msg=initialising module=distributor
+level=info ts=2024-02-10T16:49:43.231215797Z caller=module_service.go:82 msg=initialising module=ingester
+level=info ts=2024-02-10T16:49:43.231225577Z caller=ingester.go:431 msg="recovering from checkpoint"
+level=info ts=2024-02-10T16:49:43.231242578Z caller=ring.go:273 msg="ring doesn't exist in KV store yet"
+level=info ts=2024-02-10T16:49:43.231263428Z caller=basic_lifecycler.go:297 msg="instance not found in the ring" instance=localhost ring=distributor
+level=info ts=2024-02-10T16:49:43.231297268Z caller=basic_lifecycler.go:297 msg="instance not found in the ring" instance=localhost ring=compactor
+level=info ts=2024-02-10T16:49:43.231302599Z caller=basic_lifecycler_delegates.go:63 msg="not loading tokens from file, tokens file path is empty"
+level=info ts=2024-02-10T16:49:43.231355079Z caller=compactor.go:395 msg="waiting until compactor is JOINING in the ring"
+level=info ts=2024-02-10T16:49:43.231359169Z caller=ingester.go:447 msg="recovered WAL checkpoint recovery finished" elapsed=134.182µs errors=false
+level=info ts=2024-02-10T16:49:43.231368479Z caller=ingester.go:453 msg="recovering from WAL"
+level=info ts=2024-02-10T16:49:43.231452991Z caller=ingester.go:469 msg="WAL segment recovery finished" elapsed=228.004µs errors=false
+level=info ts=2024-02-10T16:49:43.231468991Z caller=ingester.go:417 msg="closing recoverer"
+level=info ts=2024-02-10T16:49:43.231474991Z caller=ingester.go:425 msg="WAL recovery finished" time=249.974µs
+level=info ts=2024-02-10T16:49:43.231528052Z caller=wal.go:156 msg=started component=wal
+level=info ts=2024-02-10T16:49:43.231539772Z caller=lifecycler.go:614 msg="not loading tokens from file, tokens file path is empty"
+level=info ts=2024-02-10T16:49:43.231580973Z caller=lifecycler.go:643 msg="instance not found in ring, adding with no tokens" ring=ingester
+level=info ts=2024-02-10T16:49:43.231644183Z caller=lifecycler.go:483 msg="auto-joining cluster after timeout" ring=ingester
+level=info ts=2024-02-10T16:49:43.350983942Z caller=compactor.go:399 msg="compactor is JOINING in the ring"
+level=info ts=2024-02-10T16:49:43.351299897Z caller=compactor.go:409 msg="waiting until compactor is ACTIVE in the ring"
+level=info ts=2024-02-10T16:49:43.430415288Z caller=ringmanager.go:218 msg="scheduler is ACTIVE in the ring"
+level=info ts=2024-02-10T16:49:43.430487699Z caller=module_service.go:82 msg=initialising module=query-scheduler
+level=info ts=2024-02-10T16:49:43.4305778Z caller=module_service.go:82 msg=initialising module=query-frontend
+level=info ts=2024-02-10T16:49:43.43058303Z caller=module_service.go:82 msg=initialising module=querier
+level=info ts=2024-02-10T16:49:43.482567473Z caller=compactor.go:413 msg="compactor is ACTIVE in the ring"
+level=info ts=2024-02-10T16:49:43.482591454Z caller=loki.go:505 msg="Loki started"
+level=info ts=2024-02-10T16:49:46.430599484Z caller=scheduler.go:615 msg="this scheduler is in the ReplicationSet, will now accept requests."
+level=info ts=2024-02-10T16:49:46.430663385Z caller=worker.go:209 msg="adding connection" addr=127.0.0.1:9096
+level=info ts=2024-02-10T16:49:48.482994458Z caller=compactor.go:474 msg="this instance has been chosen to run the compactor, starting compactor"
+level=info ts=2024-02-10T16:49:48.483061549Z caller=compactor.go:503 msg="waiting 10m0s for ring to stay stable and previous compactions to finish before starting compactor"
+level=info ts=2024-02-10T16:49:53.431195956Z caller=frontend_scheduler_worker.go:107 msg="adding connection to scheduler" addr=127.0.0.1:9096
+level=info ts=2024-02-10T16:50:43.224013006Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:50:43.224045466Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:50:43.226206998Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:50:43.226232909Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:51:43.2235645Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:51:43.22359726Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:51:43.22360549Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:51:43.22361202Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:52:43.223466028Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:52:43.223505118Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:52:43.223513558Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:52:43.223519918Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:53:43.223282912Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:53:43.223317082Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:53:43.223325752Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:53:43.223332212Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:54:43.223451237Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:54:43.223484468Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:54:43.223491988Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:54:43.223498618Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:54:43.224585934Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T16:54:43.224641676Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T16:54:43.224715337Z caller=spanlogger.go:86 level=info msg="table cache built" duration=57.461µs
+level=info ts=2024-02-10T16:54:43.224748037Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.94µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T16:54:43.232319859Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T16:54:43.23238802Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000282
+level=info ts=2024-02-10T16:54:43.233181742Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000282.tmp new=/tmp/loki/wal/checkpoint.000282
+level=info ts=2024-02-10T16:55:43.22362571Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:55:43.22366731Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:55:43.22367886Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:55:43.223686391Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:56:43.223913896Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:56:43.223950596Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:56:43.223958866Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:56:43.223965346Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:57:43.224064879Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:57:43.22410956Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:57:43.22411763Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:57:43.2241237Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:58:43.223708532Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:58:43.223750602Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:58:43.223759562Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:58:43.223766962Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:59:43.223568102Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T16:59:43.223608403Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T16:59:43.223617443Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T16:59:43.223624703Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T16:59:43.224662762Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T16:59:43.224714013Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T16:59:43.224801175Z caller=spanlogger.go:86 level=info msg="table cache built" duration=66.531µs
+level=info ts=2024-02-10T16:59:43.224832695Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.6µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T16:59:43.232303328Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T16:59:43.232368329Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000283
+level=info ts=2024-02-10T16:59:43.233745004Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000283.tmp new=/tmp/loki/wal/checkpoint.000283
+level=info ts=2024-02-10T16:59:48.483866319Z caller=compactor.go:508 msg="compactor startup delay completed"
+level=info ts=2024-02-10T16:59:48.483918349Z caller=compactor.go:562 msg="compactor started"
+ts=2024-02-10T16:59:48.48394529Z caller=spanlogger.go:86 level=info msg="building table names cache"
+ts=2024-02-10T16:59:48.484051842Z caller=spanlogger.go:86 level=info msg="table names cache built" duration=75.732µs
+level=info ts=2024-02-10T16:59:48.484079052Z caller=compactor.go:683 msg="compacting table" table-name=index_19763
+ts=2024-02-10T16:59:48.484149474Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T16:59:48.484189664Z caller=spanlogger.go:86 level=info msg="table cache built" duration=34.76µs
+level=info ts=2024-02-10T16:59:48.484197384Z caller=table.go:132 table-name=index_19763 msg="listed files" count=1
+level=info ts=2024-02-10T16:59:48.48505318Z caller=util.go:94 table-name=index_19763 file-name=1707579044-localhost-1707495529955551756.tsdb.gz size="500 B" msg="downloaded file" total_time=787.864µs
+level=info ts=2024-02-10T16:59:48.485329545Z caller=util.go:94 table-name=index_19763 user-id=fake user-id=fake file-name=1707580069-compactor-1707573407604-1707577292603-4d3e148e.tsdb.gz size="950 B" msg="downloaded file" total_time=121.322µs
+level=info ts=2024-02-10T16:59:48.49063458Z caller=index_set.go:269 table-name=index_19763 user-id=fake user-id=fake msg="removing source db files from storage" count=1
+level=info ts=2024-02-10T16:59:48.490705071Z caller=index_set.go:269 table-name=index_19763 msg="removing source db files from storage" count=1
+level=info ts=2024-02-10T16:59:48.490798883Z caller=compactor.go:688 msg="finished compacting table" table-name=index_19763
+level=info ts=2024-02-10T17:00:43.223222629Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:00:43.22325699Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:00:43.22326524Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:00:43.22327198Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:01:43.224155834Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:01:43.224186954Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:01:43.224196815Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:01:43.224203855Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:02:43.223748971Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:02:43.223785022Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:02:43.223793652Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:02:43.223799872Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:03:43.223477648Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:03:43.223513178Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:03:43.223521329Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:03:43.223527409Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:04:43.2236577Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:04:43.223693141Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:04:43.223703251Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:04:43.223709551Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:04:43.224759558Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:04:43.224807639Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:04:43.224910331Z caller=spanlogger.go:86 level=info msg="table cache built" duration=81.442µs
+level=info ts=2024-02-10T17:04:43.225495071Z caller=util.go:94 table-name=index_19763 user-id=fake file-name=1707584388-compactor-1707573407604-1707577292603-4d3e148e.tsdb.gz size="950 B" msg="downloaded file" total_time=530.689µs
+level=info ts=2024-02-10T17:04:43.226270853Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.79µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:04:43.232258283Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:04:43.232353465Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000284
+level=info ts=2024-02-10T17:04:43.233296631Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000284.tmp new=/tmp/loki/wal/checkpoint.000284
+level=info ts=2024-02-10T17:05:43.223654069Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:05:43.223698049Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:05:43.223705659Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:05:43.22371308Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:06:43.223947694Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:06:43.223982144Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:06:43.223990194Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:06:43.223996264Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:07:43.223884706Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:07:43.223929737Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:07:43.223941337Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:07:43.223952347Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:08:43.223427749Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:08:43.22346412Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:08:43.22347247Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:08:43.22348112Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:09:43.22353767Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:09:43.223571621Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:09:43.223579511Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:09:43.223585481Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:09:43.224663287Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:09:43.224701518Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:09:43.224770269Z caller=spanlogger.go:86 level=info msg="table cache built" duration=51.501µs
+level=info ts=2024-02-10T17:09:43.22479948Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.61µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:09:43.232477153Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:09:43.232547514Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000285
+level=info ts=2024-02-10T17:09:43.233800465Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000285.tmp new=/tmp/loki/wal/checkpoint.000285
+ts=2024-02-10T17:09:48.491283629Z caller=spanlogger.go:86 level=info msg="building table names cache"
+ts=2024-02-10T17:09:48.491431381Z caller=spanlogger.go:86 level=info msg="table names cache built" duration=81.571µs
+level=info ts=2024-02-10T17:09:48.491462352Z caller=compactor.go:683 msg="compacting table" table-name=index_19763
+ts=2024-02-10T17:09:48.491539023Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:09:48.491577604Z caller=spanlogger.go:86 level=info msg="table cache built" duration=32.561µs
+level=info ts=2024-02-10T17:09:48.491585234Z caller=table.go:132 table-name=index_19763 msg="listed files" count=0
+level=info ts=2024-02-10T17:09:48.491704346Z caller=compactor.go:688 msg="finished compacting table" table-name=index_19763
+level=info ts=2024-02-10T17:10:43.224003993Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:10:43.224039934Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:10:43.224048214Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:10:43.224054034Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:11:43.223795372Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:11:43.223834082Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:11:43.223842252Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:11:43.223849702Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:12:43.223986482Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:12:43.224021053Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:12:43.224028533Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:12:43.224034733Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:13:43.223106892Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:13:43.223141502Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:13:43.223148932Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:13:43.223154813Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:14:43.223712326Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:14:43.223746807Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:14:43.223754347Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:14:43.223761307Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:14:43.224793763Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:14:43.224848493Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:14:43.224929315Z caller=spanlogger.go:86 level=info msg="table cache built" duration=60.061µs
+level=info ts=2024-02-10T17:14:43.224960515Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.67µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:14:43.232174418Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:14:43.232251609Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000286
+level=info ts=2024-02-10T17:14:43.233469169Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000286.tmp new=/tmp/loki/wal/checkpoint.000286
+level=info ts=2024-02-10T17:15:43.223524186Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:15:43.223558017Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:15:43.223565097Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:15:43.223571167Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:16:43.223763509Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:16:43.22379545Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:16:43.22380238Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:16:43.22380917Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:17:43.223292535Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:17:43.223324476Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:17:43.223333726Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:17:43.223340966Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:18:43.223664346Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:18:43.223711736Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:18:43.223719476Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:18:43.223727817Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:19:43.223194629Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:19:43.223225479Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:19:43.223237029Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:19:43.223243549Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:19:43.224383666Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:19:43.224445367Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:19:43.224550469Z caller=spanlogger.go:86 level=info msg="table cache built" duration=77.391µs
+level=info ts=2024-02-10T17:19:43.224593689Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=2.18µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:19:43.231951994Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:19:43.232029685Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000287
+level=info ts=2024-02-10T17:19:43.233005Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000287.tmp new=/tmp/loki/wal/checkpoint.000287
+ts=2024-02-10T17:19:48.491154103Z caller=spanlogger.go:86 level=info msg="building table names cache"
+ts=2024-02-10T17:19:48.491493338Z caller=spanlogger.go:86 level=info msg="table names cache built" duration=277.274µs
+level=info ts=2024-02-10T17:19:48.491522768Z caller=compactor.go:683 msg="compacting table" table-name=index_19763
+ts=2024-02-10T17:19:48.491601199Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:19:48.49164029Z caller=spanlogger.go:86 level=info msg="table cache built" duration=31.831µs
+level=info ts=2024-02-10T17:19:48.49164921Z caller=table.go:132 table-name=index_19763 msg="listed files" count=0
+level=info ts=2024-02-10T17:19:48.491763632Z caller=compactor.go:688 msg="finished compacting table" table-name=index_19763
+level=info ts=2024-02-10T17:20:43.223723966Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:20:43.223761116Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:20:43.223768336Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:20:43.223774627Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:21:43.223789286Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:21:43.223825477Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:21:43.223832967Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:21:43.223839087Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:22:43.223122883Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:22:43.223158923Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:22:43.223166273Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:22:43.223172293Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:23:43.223879966Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:23:43.223916777Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:23:43.223948827Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:23:43.223955837Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:24:43.223740258Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:24:43.223776488Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:24:43.223783808Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:24:43.223790208Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:24:43.224832644Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:24:43.224883446Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:24:43.224961557Z caller=spanlogger.go:86 level=info msg="table cache built" duration=62.731µs
+level=info ts=2024-02-10T17:24:43.224992007Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.63µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:24:43.232078655Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:24:43.232160307Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000288
+level=info ts=2024-02-10T17:24:43.233124372Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000288.tmp new=/tmp/loki/wal/checkpoint.000288
+level=info ts=2024-02-10T17:25:43.223634164Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:25:43.223667355Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:25:43.223674165Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:25:43.223681145Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:26:43.223755613Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:26:43.223790883Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:26:43.223799413Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:26:43.223806403Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:27:43.223628874Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:27:43.223665565Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:27:43.223673755Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:27:43.223680925Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:28:43.224040395Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:28:43.224081215Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:28:43.224088985Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:28:43.224094795Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:29:43.223209402Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:29:43.223256402Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:29:43.223263483Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:29:43.223269703Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:29:43.225339854Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:29:43.225384615Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:29:43.225465266Z caller=spanlogger.go:86 level=info msg="table cache built" duration=67.181µs
+level=info ts=2024-02-10T17:29:43.22570298Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=2µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:29:43.231789672Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:29:43.231864263Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000289
+level=info ts=2024-02-10T17:29:43.233497448Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000289.tmp new=/tmp/loki/wal/checkpoint.000289
+ts=2024-02-10T17:29:48.491397953Z caller=spanlogger.go:86 level=info msg="building table names cache"
+ts=2024-02-10T17:29:48.491558005Z caller=spanlogger.go:86 level=info msg="table names cache built" duration=101.611µs
+level=info ts=2024-02-10T17:29:48.491587895Z caller=compactor.go:683 msg="compacting table" table-name=index_19763
+ts=2024-02-10T17:29:48.491858069Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:29:48.49189248Z caller=spanlogger.go:86 level=info msg="table cache built" duration=28.62µs
+level=info ts=2024-02-10T17:29:48.49189945Z caller=table.go:132 table-name=index_19763 msg="listed files" count=0
+level=info ts=2024-02-10T17:29:48.492016392Z caller=compactor.go:688 msg="finished compacting table" table-name=index_19763
+level=info ts=2024-02-10T17:30:43.223535757Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:30:43.223581728Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:30:43.223589298Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:30:43.223595468Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+2024/02/10 17:31:02 http: TLS handshake error from [::1]:34170: EOF
+2024/02/10 17:31:02 http: TLS handshake error from [::1]:34172: EOF
+level=info ts=2024-02-10T17:31:43.22361102Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:31:43.223648631Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:31:43.223656051Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:31:43.223664051Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+2024/02/10 17:31:55 http: TLS handshake error from [::1]:38762: EOF
+2024/02/10 17:32:23 http: TLS handshake error from 127.0.0.1:45360: EOF
+level=info ts=2024-02-10T17:32:43.223522606Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:32:43.223566967Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:32:43.223574407Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:32:43.223580457Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:33:43.223453491Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:33:43.223487031Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:33:43.223494362Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:33:43.223500292Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:34:43.223387733Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:34:43.223427845Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:34:43.223437045Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:34:43.223446385Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:34:43.224610591Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:34:43.224660263Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:34:43.224741444Z caller=spanlogger.go:86 level=info msg="table cache built" duration=60.281µs
+level=info ts=2024-02-10T17:34:43.224773655Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.49µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:34:43.232014412Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:34:43.232094174Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000290
+level=info ts=2024-02-10T17:34:43.233139847Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000290.tmp new=/tmp/loki/wal/checkpoint.000290
+level=info ts=2024-02-10T17:35:43.224105817Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:35:43.224140528Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:35:43.224147878Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:35:43.224158008Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:36:43.223769763Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:36:43.223841685Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:36:43.223850015Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:36:43.223856495Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:37:43.223816855Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:37:43.223857986Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:37:43.223865226Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:37:43.223871646Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:38:43.2235743Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:38:43.223623551Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:38:43.223640971Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:38:43.223648041Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:39:43.223322321Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:39:43.223358011Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:39:43.223367551Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:39:43.223373812Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:39:43.224481643Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:39:43.224529964Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:39:43.224618196Z caller=spanlogger.go:86 level=info msg="table cache built" duration=63.912µs
+level=info ts=2024-02-10T17:39:43.224651006Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.78µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:39:43.231970193Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:39:43.232068985Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000291
+level=info ts=2024-02-10T17:39:43.233585675Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000291.tmp new=/tmp/loki/wal/checkpoint.000291
+ts=2024-02-10T17:39:48.491833397Z caller=spanlogger.go:86 level=info msg="building table names cache"
+ts=2024-02-10T17:39:48.491950319Z caller=spanlogger.go:86 level=info msg="table names cache built" duration=64.951µs
+level=info ts=2024-02-10T17:39:48.49196982Z caller=compactor.go:683 msg="compacting table" table-name=index_19763
+ts=2024-02-10T17:39:48.492041091Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:39:48.492076122Z caller=spanlogger.go:86 level=info msg="table cache built" duration=28.951µs
+level=info ts=2024-02-10T17:39:48.492083482Z caller=table.go:132 table-name=index_19763 msg="listed files" count=0
+level=info ts=2024-02-10T17:39:48.492188114Z caller=compactor.go:688 msg="finished compacting table" table-name=index_19763
+level=info ts=2024-02-10T17:40:43.223845041Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:40:43.223879771Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:40:43.223886851Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:40:43.223892931Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:41:43.22375182Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:41:43.223794221Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:41:43.223801181Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:41:43.223807441Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:42:43.223257746Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:42:43.223294117Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:42:43.223301287Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:42:43.223307457Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:43:43.223628532Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:43:43.223670373Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:43:43.223678383Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:43:43.223684743Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:44:43.224070784Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:44:43.224110665Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:44:43.224118405Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:44:43.224124755Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:44:43.225153634Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:44:43.225209505Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:44:43.225295906Z caller=spanlogger.go:86 level=info msg="table cache built" duration=67.951µs
+level=info ts=2024-02-10T17:44:43.225327627Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.47µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:44:43.23155002Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:44:43.231640852Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000292
+level=info ts=2024-02-10T17:44:43.232867015Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000292.tmp new=/tmp/loki/wal/checkpoint.000292
+level=info ts=2024-02-10T17:45:43.223241507Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:45:43.223286118Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:45:43.223293638Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:45:43.223300538Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:46:43.223688046Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:46:43.223727086Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:46:43.223738116Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:46:43.223747917Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:47:43.223633984Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:47:43.223661455Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:47:43.223668196Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:47:43.223674756Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:48:43.223661327Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:48:43.223699268Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:48:43.223706858Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:48:43.223718258Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:49:43.223621028Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:49:43.223654138Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:49:43.223661039Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:49:43.223670199Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:49:43.224735428Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:49:43.224781679Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:49:43.2248564Z caller=spanlogger.go:86 level=info msg="table cache built" duration=54.021µs
+level=info ts=2024-02-10T17:49:43.22488982Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.62µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:49:43.224900031Z caller=table_manager.go:244 index-store=tsdb-2020-10-24 msg="cleaning tables cache"
+level=info ts=2024-02-10T17:49:43.224905031Z caller=table_manager.go:247 index-store=tsdb-2020-10-24 msg="cleaning up expired table index_19763"
+level=info ts=2024-02-10T17:49:43.232082475Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:49:43.232174616Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000293
+level=info ts=2024-02-10T17:49:43.233047742Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000293.tmp new=/tmp/loki/wal/checkpoint.000293
+ts=2024-02-10T17:49:48.491198071Z caller=spanlogger.go:86 level=info msg="building table names cache"
+ts=2024-02-10T17:49:48.491342914Z caller=spanlogger.go:86 level=info msg="table names cache built" duration=83.862µs
+level=info ts=2024-02-10T17:49:48.491368494Z caller=compactor.go:683 msg="compacting table" table-name=index_19763
+ts=2024-02-10T17:49:48.491453676Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:49:48.491491426Z caller=spanlogger.go:86 level=info msg="table cache built" duration=31µs
+level=info ts=2024-02-10T17:49:48.491501616Z caller=table.go:132 table-name=index_19763 msg="listed files" count=0
+level=info ts=2024-02-10T17:49:48.491798471Z caller=compactor.go:688 msg="finished compacting table" table-name=index_19763
+level=info ts=2024-02-10T17:50:43.223637179Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:50:43.22367272Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:50:43.22367961Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:50:43.22368606Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:51:43.223994797Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:51:43.224028468Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:51:43.224035628Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:51:43.224042098Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:52:43.223122073Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:52:43.223156234Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:52:43.223164794Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:52:43.223171294Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:53:43.223808506Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:53:43.223841577Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:53:43.223848577Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:53:43.223855237Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:54:43.223175311Z caller=table_manager.go:136 index-store=tsdb-2020-10-24 msg="uploading tables"
+level=info ts=2024-02-10T17:54:43.223213091Z caller=index_set.go:86 msg="uploading table index_19763"
+level=info ts=2024-02-10T17:54:43.223220661Z caller=index_set.go:107 msg="finished uploading table index_19763"
+level=info ts=2024-02-10T17:54:43.223226622Z caller=index_set.go:185 msg="cleaning up unwanted indexes from table index_19763"
+level=info ts=2024-02-10T17:54:43.225305736Z caller=table_manager.go:228 index-store=tsdb-2020-10-24 msg="syncing tables"
+ts=2024-02-10T17:54:43.225352247Z caller=spanlogger.go:86 level=info msg="building table cache"
+ts=2024-02-10T17:54:43.225426438Z caller=spanlogger.go:86 level=info msg="table cache built" duration=57.801µs
+level=info ts=2024-02-10T17:54:43.225484189Z caller=table_manager.go:271 index-store=tsdb-2020-10-24 msg="query readiness setup completed" duration=1.54µs distinct_users_len=0 distinct_users=
+level=info ts=2024-02-10T17:54:43.231791406Z caller=checkpoint.go:611 msg="starting checkpoint"
+level=info ts=2024-02-10T17:54:43.231871987Z caller=checkpoint.go:336 msg="attempting checkpoint for" dir=/tmp/loki/wal/checkpoint.000294
+level=info ts=2024-02-10T17:54:43.23318385Z caller=checkpoint.go:498 msg="atomic checkpoint finished" old=/tmp/loki/wal/checkpoint.000294.tmp new=/tmp/loki/wal/checkpoint.000294

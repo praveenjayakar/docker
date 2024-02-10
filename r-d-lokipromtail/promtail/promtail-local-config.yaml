@@ -1,0 +1,25 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+  http_tls_config:
+    cert_file: /root/promtail/loki.crt
+    key_file: /root/promtail/loki.key
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: https://localhost:3100/loki/api/v1/push
+    tls_config:
+      ca_file: /root/promtail/ca_combined.pem
+      insecure_skip_verify: false
+
+scrape_configs:
+  - job_name: system-2
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: private
+          __path__: /root/logs/*log
+
