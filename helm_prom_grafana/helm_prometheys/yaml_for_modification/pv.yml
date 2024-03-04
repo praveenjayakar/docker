@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/provisioned-by: k8s-sigs.io/nfs-subdir-external-provisioner
+  creationTimestamp: "2024-03-01T16:07:56Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: pvc-a489ba3a-071d-43c6-9d0f-329a1feca31e
+  resourceVersion: "822623"
+  uid: 3318f044-97e8-4c2b-b3f2-f07d930768e3
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 2Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: storage-volume-prom-prometheus-server-0
+    namespace: default
+    resourceVersion: "822609"
+    uid: a489ba3a-071d-43c6-9d0f-329a1feca31e
+  nfs:
+    path: /srv/nfs-storage/default-storage-volume-prom-prometheus-server-0-pvc-a489ba3a-071d-43c6-9d0f-329a1feca31e
+    server: 172.235.18.212
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: managed-nfs-storage
+  volumeMode: Filesystem
+status:
+  phase: Bound

@@ -1,0 +1,2 @@
+kubectl create configmap grafana-config --from-file=grafana.ini
+
