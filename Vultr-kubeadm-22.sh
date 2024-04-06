@@ -82,7 +82,7 @@ source ~/.bashrc
 sleep 20
 
 # Task 11
-kubectl taint nodes localhost node-role.kubernetes.io/control-plane:NoSchedule-
+kubectl taint nodes $(kubectl get nodes | awk '{print $1}'|grep -v NAME) node-role.kubernetes.io/control-plane:NoSchedule-
 
 # Task 12
 kubectl get nodes
