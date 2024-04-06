@@ -55,11 +55,13 @@ sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
 sleep 2
 sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg ;
+# curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg ;
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg;
 sleep 2
 
 
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+# echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 sleep 3
 
@@ -70,16 +72,35 @@ sudo apt-mark hold kubelet kubeadm kubectl
 echo "Done!"
 
 
-#kubeip=$(ip addr | grep -i eth | grep -i inet | awk '{print $2}'| cut -d "/" -f1)
+kubeip=$(ip addr | grep -i eth | grep -i inet | awk '{print $2}'| cut -d "/" -f1)
 
-#sudo kubeadm init --control-plane-endpoint=${kubeip} --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///var/run/containerd/containerd.sock
+sudo kubeadm init --control-plane-endpoint=${kubeip} --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///var/run/containerd/containerd.sock
 
-#curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/calico.yaml -O
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/calico.yaml -O
 
-#kubectl apply -f calico.yaml
+kubectl apply -f calico.yaml
 
 #if you want to untaint the node to deploy pods on master node
 
-#use this command kubectl taint nodes localhost node-role.kubernetes.io/control-plane:NoSchedule-
+kubectl taint nodes $(kubectl get nodes | awk '{print $1}'|grep -v NAME) node-role.kubernetes.io/control-plane:NoSchedule-
 
 #in the name of localhost give the cluster name .
+
+
+wget https://github.com/kubecolor/kubecolor/releases/download/v0.2.2/kubecolor_0.2.2_linux_amd64.tar.gz
+tar -xzvf kubecolor_0.2.2_linux_amd64.tar.gz
+mv kubecolor /usr/local/bin
+
+echo "alias k=kubecolor" >> ~/.bashrc
+source ~/.bashrc
+sleep 20
+
+kubectl get nodes
+
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh > /dev/null
+sleep 1
+helm version
+
+
