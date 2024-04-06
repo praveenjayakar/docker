@@ -71,14 +71,12 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 echo "Done!"
 
+sudo kubeadm init --control-plane-endpoint=$($(ip addr | grep -i eth | grep -i inet | awk '{print $2}'| cut -d "/" -f1)
+) --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///var/run/containerd/containerd.sock
 
-kubeip=$(ip addr | grep -i eth | grep -i inet | awk '{print $2}'| cut -d "/" -f1)
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.27.3/manifests/calico.yaml -O
 
-sudo kubeadm init --control-plane-endpoint=${kubeip} --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///var/run/containerd/containerd.sock
-
-curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/calico.yaml -O
-
-kubectl apply -f calico.yaml
+#kubectl apply -f calico.yaml
 
 #if you want to untaint the node to deploy pods on master node
 
