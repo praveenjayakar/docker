@@ -103,4 +103,5 @@ chmod 700 get_helm.sh
 sleep 1
 helm version
 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.9.6/deploy/static/provider/baremetal/deploy.yaml
 
