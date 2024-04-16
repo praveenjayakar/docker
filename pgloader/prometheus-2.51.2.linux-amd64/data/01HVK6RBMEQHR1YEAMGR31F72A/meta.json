@@ -1,0 +1,17 @@
+{
+	"ulid": "01HVK6RBMEQHR1YEAMGR31F72A",
+	"minTime": 1713252028816,
+	"maxTime": 1713254400000,
+	"stats": {
+		"numSamples": 228079,
+		"numSeries": 1786,
+		"numChunks": 1871
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HVK6RBMEQHR1YEAMGR31F72A"
+		]
+	},
+	"version": 1
+}

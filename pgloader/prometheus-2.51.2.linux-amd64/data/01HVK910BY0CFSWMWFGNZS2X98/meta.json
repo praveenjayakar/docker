@@ -1,0 +1,17 @@
+{
+	"ulid": "01HVK910BY0CFSWMWFGNZS2X98",
+	"minTime": 1713254403292,
+	"maxTime": 1713261600000,
+	"stats": {
+		"numSamples": 824395,
+		"numSeries": 2153,
+		"numChunks": 7934
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HVK910BY0CFSWMWFGNZS2X98"
+		]
+	},
+	"version": 1
+}
