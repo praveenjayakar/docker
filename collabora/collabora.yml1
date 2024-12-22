@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: collabora
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: collabora
+  template:
+    metadata:
+      labels:
+        app: collabora
+    spec:
+      securityContext:
+        fsGroup: 1000  # Ensures that files are accessible to the container
+      containers:
+        - name: collabora
+          image: collabora/code:latest
+          ports:
+            - containerPort: 9980
+          env:
+            - name: "domain"
+              value: "pjdevops.com"  # Use your domain or localhost
+            - name: "server_name"
+              value: "pjdevops.com"  # Use your domain or localhost
+            - name: "dictionaries"
+              value: "de en es it"  # Adjust dictionaries as needed
+            - name: "extra_params"
+              value: "--o:ssl.enable=true --o:ssl.termination=true"
+          volumeMounts:
+            - name: collabora-storage
+              mountPath: /var/lib/collabora  # Path where Collabora stores its data
+          securityContext:
+            runAsUser: 1000         # Run as non-root user (typically 'cool' user)
+            runAsGroup: 1000        # Run as non-root group (typically 'cool' group)
+            capabilities:
+              add:
+                - MKNOD           # Needed for mounting devices in the container
+                - SYS_ADMIN       # Allows broader system access to handle certain operations
+      volumes:
+        - name: collabora-storage
+          hostPath:
+            path: /mnt/data/collabora  # Host path for persistent storage
+            type: DirectoryOrCreate  # Creates directory if not present
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: collabora-service
+spec:
+  selector:
+    app: collabora
+  ports:
+    - protocol: TCP
+      port: 9980        # Internal port to expose
+      targetPort: 9980  # Container's port
+      nodePort: 30080   # NodePort to expose externally (adjust port as needed)
+  type: NodePort        # Exposes service using NodePort
+
