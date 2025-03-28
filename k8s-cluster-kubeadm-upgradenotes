@@ -1,0 +1,241 @@
+oot@master:~#
+root@master:~# cat notes.txt
+sed -i  "s/v1.30/v1.31/g" /etc/apt/sources.list.d/kubernetes.list
+
+sudo apt update
+                                                                sudo apt-cache madison kubeadm                                     kubeadm | 1.31.7-1.1 | https://pkgs.k8s.io/core:/stable:/v1.31/deb  Packages                                                    kubeadm | 1.31.6-1.1 | https://pkgs.k8s.io/core:/stable:/v1.31/deb  Packages                                                    kubeadm | 1.31.5-1.1 | https://pkgs.k8s.io/core:/stable:/v1.31/deb  Packages                                                    kubeadm | 1.31.4-1.1 | https://pkgs.k8s.io/core:/stable:/v1.31/deb  Packages                                                    kubeadm | 1.31.3-1.1 | https://pkgs.k8s.io/core:/stable:/v1.31/deb  Packages                                                    kubeadm | 1.31.2-1.1 | https://pkgs.k8s.io/core:/stable:/v1.31/deb  Packages                                                    kubeadm | 1.31.1-1.1 | https://pkgs.k8s.io/core:/stable:/v1.31/deb  Packages                                                    kubeadm | 1.31.0-1.1 | https://pkgs.k8s.io/core:/stable:/v1.31/deb  Packages                                                 
+it will list all the latest tags with patchs. we can choose the latest one 1.31.7-1.1
+                                                                #Upgrade kubeadm in control plane                                                                                               sudo apt-mark unhold kubeadm && \
+sudo apt-get update && sudo apt-get install -y kubeadm='1.31.7-1.1' && \
+sudo apt-mark hold kubeadm
+
+# this will show the plan before exexution what needs to be upgraded and from source and target version
+sudo kubeadm upgrade plan
+
+root@master:~# kubeadm upgrade plan
+[preflight] Running pre-flight checks.
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
+[upgrade] Running cluster health checks
+[upgrade] Fetching available versions to upgrade to
+[upgrade/versions] Cluster version: 1.30.11
+[upgrade/versions] kubeadm version: v1.31.7
+I0328 11:10:52.846129   42344 version.go:261] remote version is much newer: v1.32.3; falling back to: stable-1.31
+[upgrade/versions] Target version: v1.31.7
+[upgrade/versions] Latest version in the v1.30 series: v1.30.11
+
+Components that must be upgraded manually after you have upgraded the control plane with 'kubeadm upgrade apply':
+COMPONENT   NODE                                                          CURRENT   TARGET
+kubelet     master                                                        v1.30.0   v1.31.7
+kubelet     worker-1.asia-south2-b.c.psychic-expanse-454404-g2.internal   v1.30.0   v1.31.7
+kubelet     worker-2                                                      v1.30.0   v1.31.7
+
+Upgrade to the latest stable version:
+
+COMPONENT                 NODE      CURRENT    TARGET
+kube-apiserver            master    v1.30.11   v1.31.7
+kube-controller-manager   master    v1.30.11   v1.31.7
+kube-scheduler            master    v1.30.11   v1.31.7
+kube-proxy                          1.30.11    v1.31.7
+CoreDNS                             v1.11.1    v1.11.3
+etcd                      master    3.5.12-0   3.5.15-0
+
+You can now apply the upgrade by executing the following command:
+
+        kubeadm upgrade apply v1.31.7
+
+_____________________________________________________________________
+
+
+The table below shows the current state of component configs as understood by this version of kubeadm.
+Configs that have a "yes" mark in the "MANUAL UPGRADE REQUIRED" column require manual config upgrade or
+resetting to kubeadm defaults before a successful upgrade can be performed. The version to manually
+upgrade to is denoted in the "PREFERRED VERSION" column.
+
+API GROUP                 CURRENT VERSION   PREFERRED VERSION   MANUAL UPGRADE REQUIRED
+kubeproxy.config.k8s.io   v1alpha1          v1alpha1            no
+kubelet.config.k8s.io     v1beta1           v1beta1             no
+_____________________________________________________________________
+
+#
+
+now you use upgrade apply command to upgrade the control plane
+
+root@master:~# kubeadm upgrade plan
+[preflight] Running pre-flight checks.
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
+[upgrade] Running cluster health checks
+[upgrade] Fetching available versions to upgrade to
+root@master:~# kubeadm upgrade apply v1.31.7
+[preflight] Running pre-flight checks.
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
+[upgrade] Running cluster health checks
+[upgrade/version] You have chosen to change the cluster version to "v1.31.7"
+[upgrade/versions] Cluster version: v1.30.11
+[upgrade/versions] kubeadm version: v1.31.7
+[upgrade] Are you sure you want to proceed? [y/N]: y
+[upgrade/prepull] Pulling images required for setting up a Kubernetes cluster
+[upgrade/prepull] This might take a minute or two, depending on the speed of your internet connection
+[upgrade/prepull] You can also perform this action beforehand using 'kubeadm config images pull'
+W0328 11:13:55.852029   43160 checks.go:846] detected that the sandbox image "registry.k8s.io/pause:3.9" of the container runtime is inconsistent with that used by kubeadm.It is recommended to use "registry.k8s.io/pause:3.10" as the CRI sandbox image.
+[upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.31.7" (timeout: 5m0s)...
+[upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests2084277297"
+[upgrade/staticpods] Preparing for "etcd" upgrade
+[upgrade/staticpods] Renewing etcd-server certificate
+[upgrade/staticpods] Renewing etcd-peer certificate
+[upgrade/staticpods] Renewing etcd-healthcheck-client certificate
+[upgrade/staticpods] Moving new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backing up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2025-03-28-11-14-24/etcd.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This can take up to 5m0s
+[apiclient] Found 1 Pods for label selector component=etcd
+[upgrade/staticpods] Component "etcd" upgraded successfully!
+[upgrade/etcd] Waiting for etcd to become available
+[upgrade/staticpods] Preparing for "kube-apiserver" upgrade
+[upgrade/staticpods] Renewing apiserver certificate
+[upgrade/staticpods] Renewing apiserver-kubelet-client certificate
+[upgrade/staticpods] Renewing front-proxy-client certificate
+[upgrade/staticpods] Renewing apiserver-etcd-client certificate
+[upgrade/staticpods] Moving new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backing up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2025-03-28-11-14-24/kube-apiserver.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This can take up to 5m0s
+[apiclient] Found 1 Pods for label selector component=kube-apiserver
+[upgrade/staticpods] Component "kube-apiserver" upgraded successfully!
+[upgrade/staticpods] Preparing for "kube-controller-manager" upgrade
+[upgrade/staticpods] Renewing controller-manager.conf certificate
+[upgrade/staticpods] Moving new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backing up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2025-03-28-11-14-24/kube-controller-manager.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This can take up to 5m0s
+[apiclient] Found 1 Pods for label selector component=kube-controller-manager
+[upgrade/staticpods] Component "kube-controller-manager" upgraded successfully!
+[upgrade/staticpods] Preparing for "kube-scheduler" upgrade
+[upgrade/staticpods] Renewing scheduler.conf certificate
+[upgrade/staticpods] Moving new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backing up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2025-03-28-11-14-24/kube-scheduler.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This can take up to 5m0s
+[apiclient] Found 1 Pods for label selector component=kube-scheduler
+[upgrade/staticpods] Component "kube-scheduler" upgraded successfully!
+[upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+[kubelet] Creating a ConfigMap "kubelet-config" in namespace kube-system with the configuration for the kubelets in the cluster
+[upgrade] Backing up kubelet config file to /etc/kubernetes/tmp/kubeadm-kubelet-config1686230132/config.yaml
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to get nodes
+[bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] Configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] Configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+[upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.31.7". Enjoy!
+
+[upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven't already done so.
+
+
+
+#if you have any other control plane then you should use this instead use this
+
+For the other control plane nodes
+
+Same as the first control plane node but use:
+
+sudo kubeadm upgrade node
+instead of:
+
+sudo kubeadm upgrade apply
+
+
+# now drain the master node to setup kubelet and kubectl annd upgrade of all
+
+kubectl drain master  --ignore-daemonsets
+
+root@master:~# kubectl drain master  --ignore-daemonsets
+node/master cordoned
+Warning: ignoring DaemonSet-managed Pods: kube-system/calico-node-qw6vj, kube-system/kube-proxy-pbcln
+evicting pod kube-system/calico-kube-controllers-5b9b456c66-5xxld
+pod/calico-kube-controllers-5b9b456c66-5xxld evicted
+node/master drained
+root@master:~#
+
+
+now upgrade remain kubelet and kubectl
+
+sudo apt-mark unhold kubelet kubectl && \
+sudo apt-get update && sudo apt-get install -y kubelet='1.31.7-1.1' kubectl='1.31.7-1.1' && \
+sudo apt-mark hold kubelet kubectl
+
+now do the deamon reload restart kubelet to affect the correct version at k get nodes
+
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+
+next uncordon the node
+
+done now our master is up and running with new version
+
+now uncordon worker node
+
+root@master:~# kubectl get nodes
+NAME                                                          STATUS                     ROLES           AGE    VERSION
+master                                                        Ready                      control-plane   102m   v1.31.7
+worker-1.asia-south2-b.c.psychic-expanse-454404-g2.internal   Ready,SchedulingDisabled   <none>          87m    v1.31.7
+worker-2                                                      Ready                      <none>          57m    v1.30.0
+root@master:~#
+root@master:~# kubectl uncordon worker-1.asia-south2-b.c.psychic-expanse-454404-g2.internal
+node/worker-1.asia-south2-b.c.psychic-expanse-454404-g2.internal uncordoned
+root@master:~#
+root@master:~# kubectl get nodes
+NAME                                                          STATUS   ROLES           AGE    VERSION
+master                                                        Ready    control-plane   102m   v1.31.7
+worker-1.asia-south2-b.c.psychic-expanse-454404-g2.internal   Ready    <none>          87m    v1.31.7
+worker-2                                                      Ready    <none>          57m    v1.30.0
+
+
+and do the same for the remain workr nodes. bravo upgrade successfull.
+============================================================
+
+$upgrade remain the worker nodes one by one which is rolling upgrade
+
+follow the 1 and 2nd steup same as master node like upgrade kubeadm and hold the package with latest version                    
+#then upgrade kubelet config in worker nodes
+sudo kubeadm upgrade node
+
+
+root@worker-1:~# sudo kubeadm upgrade node
+[upgrade] Reading configuration from the cluster...
+[upgrade] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
+[preflight] Running pre-flight checks
+[preflight] Skipping prepull. Not a control plane node.
+[upgrade] Skipping phase. Not a control plane node.
+[upgrade] Skipping phase. Not a control plane node.
+[upgrade] Backing up kubelet config file to /etc/kubernetes/tmp/kubeadm-kubelet-config5791449/config.yaml
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[upgrade] The configuration for this node was successfully updated!
+[upgrade] Now you should go ahead and upgrade the kubelet package using your package manager.
+
+
+now drain the nodes from worker 1 from master node since kubelet is accessible from master
+
+kubectl drain worker-1
+
+root@master:~# kubectl drain worker-1.asia-south2-b.c.psychic-expanse-454404-g2.internal --ignore-daemonsets
+node/worker-1.asia-south2-b.c.psychic-expanse-454404-g2.internal already cordoned
+Warning: ignoring DaemonSet-managed Pods: kube-system/calico-node-rtqwr, kube-system/kube-proxy-s7bl8
+evicting pod kube-system/coredns-7c65d6cfc9-mcjlf               evicting pod default/nginx-deployment-576c6b7b6-hzn7q
+evicting pod default/nginx-deployment-576c6b7b6-9plbs
+evicting pod default/nginx-deployment-576c6b7b6-d5dn9
+evicting pod kube-system/calico-kube-controllers-5b9b456c66-p5hdd
+evicting pod default/nginx-deployment-576c6b7b6-svxvl
+evicting pod default/nginx-deployment-576c6b7b6-8tcm8
+pod/nginx-deployment-576c6b7b6-svxvl evicted
+pod/nginx-deployment-576c6b7b6-d5dn9 evicted
+pod/nginx-deployment-576c6b7b6-hzn7q evicted
+pod/nginx-deployment-576c6b7b6-8tcm8 evicted
+pod/calico-kube-controllers-5b9b456c66-p5hdd evicted
+pod/nginx-deployment-576c6b7b6-9plbs evicted
+pod/coredns-7c65d6cfc9-mcjlf evicted
+node/worker-1.asia-south2-b.c.psychic-expanse-454404-g2.internal drained
+root@master:~#
+
+
+now upgrade the kubelet and kubectl and reload and restart kubelet
